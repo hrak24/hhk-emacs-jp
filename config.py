@@ -1,4 +1,4 @@
-﻿import sys
+import sys
 import os
 import datetime
 
@@ -52,7 +52,7 @@ def configure(keymap):
 
     # Setting with program file path (Simple usage)
     if 1:
-        keymap.editor = "C:\\Users\\5031842\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+        keymap.editor = "Code"
 
     # Setting with callable object (Advanced usage)
     if 0:
@@ -72,63 +72,78 @@ def configure(keymap):
     # --------------------------------------------------------------------
 
     # Simple key replacement
-    keymap.replaceKey( "LWin", 235 )
-    keymap.replaceKey( "RWin", 255 )
-    keymap.replaceKey( MUHENKAN_CODE, 235 )
-    keymap.replaceKey( HENKAN_CODE, 255 )
+    # keymap.replaceKey( "LWin", 235 )
+    # keymap.replaceKey( "RWin", 255 )
+    # keymap.replaceKey( MUHENKAN_CODE, 235 )
+    # keymap.replaceKey( HENKAN_CODE, 255 )
 
     # User modifier key definition
-    keymap.defineModifier( 235, "User0" )
-    keymap.defineModifier( 255, "User1" )
+    # keymap.defineModifier( 235, "User0" )
+    # keymap.defineModifier( 255, "User1" )
 
     # Global keymap which affects any windows
     if 1:
         keymap_global = keymap.defineWindowKeymap()
 
         # IME mode switch
-        keymap_global[ "O-235" ] = MUHENKAN_CODE           # Muhenkan
-        keymap_global[ "O-255" ] = HENKAN_CODE             # Henkan
+        # keymap_global[ "O-235" ] = MUHENKAN_CODE           # Muhenkan
+        # keymap_global[ "O-255" ] = HENKAN_CODE             # Henkan
+        keymap_global[ "O-LAlt" ] = MUHENKAN_CODE           # Muhenkan
+        keymap_global[ "O-RAlt" ] = HENKAN_CODE             # Henkan
+        keymap_global[ "O-LShift" ] = MUHENKAN_CODE           # Muhenkan
+        keymap_global[ "O-RShift" ] = HENKAN_CODE             # Henkan
 
         # Windows key combination
-        keymap_global[ "U1-E" ] = "W-E"                   # Explorer
-        keymap_global[ "U1-A" ] = "W-A"                   # Action center
-        keymap_global[ "U1-D" ] = "W-D"                   # Desktop
-        keymap_global[ "U1-M" ] = "W-M"                   # Minimize
-        keymap_global[ "U0-0" ] = "W-0"                   # Launcher
-        keymap_global[ "U0-1" ] = "W-1"                   # Launcher
-        keymap_global[ "U0-2" ] = "W-2"                   # Launcher
-        keymap_global[ "U0-3" ] = "W-3"                   # Launcher
-        keymap_global[ "U0-4" ] = "W-4"                   # Launcher
-        keymap_global[ "U0-5" ] = "W-5"                   # Launcher
-        keymap_global[ "U0-6" ] = "W-6"                   # Launcher
-        keymap_global[ "U0-7" ] = "W-7"                   # Launcher
-        keymap_global[ "U0-8" ] = "W-8"                   # Launcher
-        keymap_global[ "U0-9" ] = "W-9"                   # Launcher
-        keymap_global[ "U1-0" ] = "W-0"                   # Launcher
-        keymap_global[ "U1-1" ] = "W-1"                   # Launcher
-        keymap_global[ "U1-2" ] = "W-2"                   # Launcher
-        keymap_global[ "U1-3" ] = "W-3"                   # Launcher
-        keymap_global[ "U1-4" ] = "W-4"                   # Launcher
-        keymap_global[ "U1-5" ] = "W-5"                   # Launcher
-        keymap_global[ "U1-6" ] = "W-6"                   # Launcher
-        keymap_global[ "U1-7" ] = "W-7"                   # Launcher
-        keymap_global[ "U1-8" ] = "W-8"                   # Launcher
-        keymap_global[ "U1-9" ] = "W-9"                   # Launcher
+        # keymap_global[ "U1-E" ] = "W-E"                   # Explorer
+        # keymap_global[ "U1-A" ] = "W-A"                   # Action center
+        # keymap_global[ "U1-D" ] = "W-D"                   # Desktop
+        # keymap_global[ "U1-M" ] = "W-M"                   # Minimize
+        # keymap_global[ "U0-0" ] = "W-0"                   # Launcher
+        # keymap_global[ "U0-1" ] = "W-1"                   # Launcher
+        # keymap_global[ "U0-2" ] = "W-2"                   # Launcher
+        # keymap_global[ "U0-3" ] = "W-3"                   # Launcher
+        # keymap_global[ "U0-4" ] = "W-4"                   # Launcher
+        # keymap_global[ "U0-5" ] = "W-5"                   # Launcher
+        # keymap_global[ "U0-6" ] = "W-6"                   # Launcher
+        # keymap_global[ "U0-7" ] = "W-7"                   # Launcher
+        # keymap_global[ "U0-8" ] = "W-8"                   # Launcher
+        # keymap_global[ "U0-9" ] = "W-9"                   # Launcher
+        # keymap_global[ "U1-0" ] = "W-0"                   # Launcher
+        # keymap_global[ "U1-1" ] = "W-1"                   # Launcher
+        # keymap_global[ "U1-2" ] = "W-2"                   # Launcher
+        # keymap_global[ "U1-3" ] = "W-3"                   # Launcher
+        # keymap_global[ "U1-4" ] = "W-4"                   # Launcher
+        # keymap_global[ "U1-5" ] = "W-5"                   # Launcher
+        # keymap_global[ "U1-6" ] = "W-6"                   # Launcher
+        # keymap_global[ "U1-7" ] = "W-7"                   # Launcher
+        # keymap_global[ "U1-8" ] = "W-8"                   # Launcher
+        # keymap_global[ "U1-9" ] = "W-9"                   # Launcher
+
+        # Prevent keep pressed the U0/U1 key
+        # keymap_global[ "U0-L" ] = "W-L"                   # Explorer
+        # keymap_global[ "U1-L" ] = "W-L"                   # Explorer
 
         # Cursor move
-        keymap_global[ "U0-OpenBracket" ] = "Up"                   # Windows snap
-        keymap_global[ "U0-Slash" ] = "Down"                   # Windows snap
-        keymap_global[ "U0-Semicolon" ] = "Left"                   # Windows snap
-        keymap_global[ "U0-Quote" ] = "Right"                   # Windows snap
+        # keymap_global[ "U0-OpenBracket" ] = "Up"                   # Windows snap
+        # keymap_global[ "U0-Slash" ] = "Down"                   # Windows snap
+        # keymap_global[ "U0-Semicolon" ] = "Left"                   # Windows snap
+        # keymap_global[ "U0-Quote" ] = "Right"                   # Windows snap
 
         # Window snap
-        keymap_global[ "U0-S-OpenBracket" ] = "W-Up"                   # Windows snap
-        keymap_global[ "U0-S-Slash" ] = "W-Down"                   # Windows snap
-        keymap_global[ "U0-S-Semicolon" ] = "W-Left"                   # Windows snap
-        keymap_global[ "U0-S-Quote" ] = "W-Right"                   # Windows snap
+        # keymap_global[ "U0-S-OpenBracket" ] = "W-Up"                   # Windows snap
+        # keymap_global[ "U0-S-Slash" ] = "W-Down"                   # Windows snap
+        # keymap_global[ "U0-S-Semicolon" ] = "W-Left"                   # Windows snap
+        # keymap_global[ "U0-S-Quote" ] = "W-Right"                   # Windows snap
+
+        # Useful combination
+        # keymap_global[ "U0-S-S" ] = "W-S-S"                   # Screen shot
+        # keymap_global[ "U1-S-S" ] = "W-S-S"                   # Screen shot
 
         # Etc
         keymap_global[ "C-OpenBracket" ] = "Esc", MUHENKAN_CODE            # Vim escape
+
+        # Etc
+        keymap_global[ "O-Pause" ] = "S-End", "Back" # Set Pause to Fn-K
 
 
     # USER0-E : Activate specific window or launch application if the window doesn't exist
